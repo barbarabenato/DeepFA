@@ -1,0 +1,5 @@
+iter: 0		 acc: 0.656000	 kappa: 0.617693 
+iter: 1		 acc: 0.812000	 kappa: 0.790948 
+iter: 2		 acc: 0.914000	 kappa: 0.904401 
+iter: 3		 acc: 0.966000	 kappa: 0.962203 
+iter: 4		 acc: 0.968000	 kappa: 0.964429 
