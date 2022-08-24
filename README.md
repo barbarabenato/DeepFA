@@ -1,10 +1,12 @@
 # DeepFA: "Deep Feature Annotation" 
 
-A python implementation of the proposed method Deep Feature Annotation (DeepFA) [1,2,3]. DeepFA aims to obtain pseudolabels from a very small supervised set of images from a large set of unsupervised one. DeepFA uses VGG-16[4] to learn the features from images; tSNE algorithm [5] project those features in a 2D space; OPFSemi[6] pseudo labels the unsupervised samples from the unsupervised ones. The most confident pseudolabels are used to feed the VGG-16 in the next DeepFA iteration. Details of the method, as well as the experiments and evaluation for distinct datasets, can be found in [1,2]. 
+A Python implementation of the proposed method Deep Feature Annotation (DeepFA) [1,2]. DeepFA aims to obtain pseudo labels from a very small supervised set of images from a large set of unsupervised ones. DeepFA uses VGG-16 to learn the features from images; the tSNE algorithm projects those features in a 2D space; OPFSemipseudo labels the unsupervised samples from the unsupervised ones. The most confident pseudo labels are used to feed the VGG-16 in the next DeepFA iteration. Details of the method, as well as the experiments and evaluation for distinct datasets, can be found in [1,2].
 
-Pseudolabels on a small subset of MNIST [4] dataset can be obtained with DeepFA using the provided code example. The percentage of the initial supervised samples is randomly choosen and the confidence value can be tested as in [2].
+Pseudolabels on a small subset of MNIST dataset can be obtained with DeepFA using the provided code example. The percentage of the initial supervised samples is randomly chosen, and different confidence values can be tested as in [2].
+
 
 [1] Benato, B. C., Gomes, J. F., Telea, A. C., Falcão, A. X. "Semi-supervised deep learning based on label propagation in a 2D embedded space." Iberoamerican Congress on Pattern Recognition. Springer, Cham, 2021. ([pdf](https://www.ijcai.org/proceedings/2017/0345.pdf))
+
 [2] Benato, B. C., Telea, A. C., Falcão, A. X. "Iterative Pseudo-Labeling with Deep Feature Annotation and Confidence-Based Sampling." 2021 34th SIBGRAPI Conference on Graphics, Patterns and Images (SIBGRAPI). IEEE, 2021. ([pdf](http://sibgrapi.sid.inpe.br/col/sid.inpe.br/sibgrapi/2021/09.06.19.40/doc/2021_sibgrapi_Benato-2.pdf))
 
 
@@ -14,7 +16,7 @@ Pseudolabels on a small subset of MNIST [4] dataset can be obtained with DeepFA 
 First of all, we need to install the PyIFT library, in which OPFSemi is implemented. The PyIFT library and the installation instructions can be found [here](https://github.com/JoOkuma/PyIFT). 
 
 ### DeepFA
-After PyIFT installed and runned, we install DeepFA by cloning the repository and then changing to the DeepFA directory:
+After PyIFT is installed and run, we install DeepFA by cloning the repository and then changing to the DeepFA directory:
 
 ```
 git clone https://github.com/barbarabenato/DeepFA.git && cd DeepFA/
@@ -33,7 +35,7 @@ python
 ```
 
 ## Running
-A simple example of DeepFA is provided on a small subset of MNIST. The usage of "run_example.py" and its parameters are provided bellow.
+A simple example of DeepFA is provided on a small subset of MNIST. The usage of "run_example.py" and its parameters are provided below.
 ```
 usage run_example.py <percentage of sup samples [0,1]> <opf_confidence_threshold [0,1]> <iterations>
 ```
@@ -43,9 +45,9 @@ You can run it by executing, for example,:
 python run_example.py 0.1 0.7 5 
 ```
 
-After its running, you should be able to see the generated feature learning curves (with training and valitation losses/accuracies), the 2D projection, and the propagation accuracy/kappa along the iterations in the folder "output/".
+After its running, you should be able to see the generated feature learning curves (with training and validation losses/accuracies), the 2D projection, and the propagation accuracy/kappa along the iterations in the folder "output/".
 
-An example of the tSNE projection after five iterations of DeepFA on MNIST is shown below. The colored points in the projection represents diferent classes and the circled red points are the supervised points in the first iteration and the pseudolabels in the next ones.
+An example of the tSNE projection after five iterations of DeepFA on MNIST is shown below. The colored points in the projection represent different classes, and the circled red points are the supervised points in the first iteration and the pseudo labels in the next ones.
 ![tsne](deepfa/output/tsne_iter4.png)
 
 
