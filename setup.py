@@ -11,8 +11,9 @@ setup(
     packages=['deepfa'],
     install_requires=[
                       'numpy',
+                      'scipy',
                       'matplotlib',
-                      'sklearn', 
+                      'scikit-learn', 
                       'tensorflow'
                       ],
 
