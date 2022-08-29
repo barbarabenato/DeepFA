@@ -4,6 +4,17 @@ import numpy as np
 
 
 def OPFSemi(x, y, samples, conf=0.0):
+    """ 
+    It creates iftdataset format and calls OPFSemi.
+
+    :param x: data features
+    :param y: data labels
+    :param samples: index of samples to be considered as supervised
+    :param conf_threshold: threshold value to be used for OPFSemi confidence [0,1]. 
+    Samples with threshold up to the confidence will be selected to retrain the feature
+    learning in the next iteration. To select all samples, conf_threshold=0.0
+    return: pseudolabels and confidence values
+    """
     # creating opfdataset with provided features
     Z = ift.CreateDataSetFromNumPy(x, np.array(y+1, dtype="int32")) # opf dataset considers labels as [1,n]
     # defining status as training (4) for all samples

@@ -9,6 +9,19 @@ import numpy as np
 import os
 
 def DeepFA(x, y, samples, feat_learn_params, conf_threshold, iterations):
+    """ 
+    Executes iterations of DeepFA 
+
+    :param x: data features
+    :param y: data labels
+    :param samples: index of samples to be considered as supervised
+    :param feat_learn_parames: list containing batch size (b), number of epochs (e), 
+    and number of classes (c) [b, e, c] 
+    :param conf_threshold: threshold value to be used for OPFSemi confidence [0,1]. 
+    Samples with threshold up to the confidence will be selected to retrain the feature learning in the next iteration. To select all samples, conf_threshold=0.0
+    :param iterations: number of DeepFA iterations
+    return: pseudolabels
+    """
     batch, epochs, n_classes = feat_learn_params
     y_labeled = y
 

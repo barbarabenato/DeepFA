@@ -7,6 +7,12 @@ import sys
 
 
 def read_data_by_path(filename):
+    """ 
+    Read data from data/
+
+    :param filename: the name of directory with data 
+    return: name of image files, images samples, and its labels
+    """
     txt_file = os.listdir(filename)
     imgfile = []
     label = []
@@ -23,6 +29,15 @@ def read_data_by_path(filename):
     return imgfile, imgs, label
 
 def save_projection(filename, data, labels, samples):
+    """ 
+    It saves the tSNE projection of labeled data
+
+    :param filename: filename of the projection to be saved
+    :param data: data features
+    :param labels: data labels
+    :param samples: index of samples to be considered as supervised
+    """
+
     fig = plt.figure(figsize=(10, 10))
     ax = fig.add_subplot(111)
     unsup_samples = np.arange(0, data.shape[0])

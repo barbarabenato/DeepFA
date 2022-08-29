@@ -12,22 +12,36 @@ Pseudolabels on a small subset of MNIST dataset can be obtained with DeepFA usin
 
 ## Installing
 
-### PyIFT
-First of all, we need to install the PyIFT library, in which OPFSemi is implemented. The PyIFT library and the installation instructions can be found [here](https://github.com/JoOkuma/PyIFT). 
+DeepFA employs OPFSemi, and its running depends on OPFSemi implementation. A precompiled file of PyIFT (see details [here](https://github.com/JoOkuma/PyIFT). A binary file is given in DeepFA/dist directory. We tested on Ubuntu 18.04 and Python 3.8. To facilitate the installation, a Dockerfile is provided. You can follow below DeepFA installation by using the Dockerfile.
+
+### Dockerfile 
+
+First, we need to download the Dockerfile provided in this project.
+```
+curl -H 'Authorization: token ACCESS_TOKEN ' -H 'Accept: application/vnd.github.v3.raw' -O -L https://raw.github.com/barbarabenato/DeepFA/main/Dockerfile
+```
+
+Then, we build the image from the Dockerfile in the same folder we downloaded the Dockerfile and run the container. 
+
+```
+docker build -t deepfa_img . && docker run -it deepfa_img 
+```
+
+You can check the PyIFT installation by:
+```
+python
+>>> import pyift.pyift as ift
+>>>
+```
+
 
 ### DeepFA
-After PyIFT is installed and run, we install DeepFA by cloning the repository and then changing to the DeepFA directory:
-
+After running a container with PyIFT installed and DeepFA downloaded, we install DeepFA by changing to the DeepFA directory and installing its dependencies:
 ```
-git clone https://github.com/barbarabenato/DeepFA.git && cd DeepFA/
-```
-
-Using the same virtualenv used for PyIFT, we install the DeepFA requirements:
-```
-pip install .
+cd DeepFA/ && python -m pip install .
 ```
 
-You can test the installation by running:
+You can check the DeepFA installation by:
 ```
 python
 >>> import deepfa
@@ -40,12 +54,9 @@ A simple example of DeepFA is provided on a small subset of MNIST. The usage of 
 usage run_example.py <percentage of sup samples [0,1]> <opf_confidence_threshold [0,1]> <iterations>
 ```
 
-You can run it by executing, for example,:
+You can run it by changing to deepfa directory and executing, for example,:
 ```
-python run_example.py 0.1 0.7 5 
-```
-
-After its running, you should be able to see the generated feature learning curves (with training and validation losses/accuracies), the 2D projection, and the propagation accuracy/kappa along the iterations in the folder "output/".
+>>> exit()n, and the propagation accuracy/kappa along the iterations in the folder "output/".
 
 An example of the tSNE projection after five iterations of DeepFA on MNIST is shown below. The colored points in the projection represent different classes, and the circled red points are the supervised points in the first iteration and the pseudo labels in the next ones.
 ![tsne](deepfa/output/tsne_iter4.png)
