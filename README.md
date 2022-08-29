@@ -54,9 +54,12 @@ A simple example of DeepFA is provided on a small subset of MNIST. The usage of 
 usage run_example.py <percentage of sup samples [0,1]> <opf_confidence_threshold [0,1]> <iterations>
 ```
 
-You can run it by changing to deepfa directory and executing, for example,:
+You can run it by changing to deepfa directory and executing, for example:
 ```
->>> exit()n, and the propagation accuracy/kappa along the iterations in the folder "output/".
+python run_example.py 0.1 0.7 5 
+```
+
+After its running, you should be able to see the generated feature learning curves (with training and validation losses/accuracies), the 2D projection, and the propagation accuracy/kappa along the iterations in the folder "output/".
 
 An example of the tSNE projection after five iterations of DeepFA on MNIST is shown below. The colored points in the projection represent different classes, and the circled red points are the supervised points in the first iteration and the pseudo labels in the next ones.
 ![tsne](deepfa/output/tsne_iter4.png)
