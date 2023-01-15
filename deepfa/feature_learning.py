@@ -1,7 +1,8 @@
 from tensorflow.keras.applications import VGG16
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Flatten, Dense, Input
-from tensorflow.keras import optimizers, regularizers
+from tensorflow.keras import regularizers
+from tensorflow.keras.optimizers.legacy import SGD
 from tensorflow.keras.callbacks import LearningRateScheduler
 from tensorflow.keras.applications.vgg16 import preprocess_input
 from tensorflow.keras.utils import to_categorical
@@ -90,7 +91,7 @@ def vgg16_learning(imgs, labels, samples, batch, epochs, file_name, n_classes=10
     enc_model = Model(input, flat) 
 
     # compiling and training the model
-    sgd = optimizers.SGD(lr=1e-1, decay=1e-6, momentum=0.9, nesterov=True)
+    sgd = SGD(lr=1e-1, decay=1e-6, momentum=0.9, nesterov=True)
     model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 
     history = model.fit(imgs[samples], to_categorical(labels[samples],n_classes), batch_size=batch, epochs=epochs, verbose=0, validation_split=0.2, shuffle=True, callbacks=callbacks)
